@@ -12,3 +12,30 @@ const getDocuments = () => {
     });
   });
 };
+
+const deleteFromFirebase = (docId) => {
+  db.collection("expenses")
+    .doc(docId)
+    .delete()
+    .then(() => {
+      console.log("Document successfully deleted!");
+    })
+    .catch((error) => {
+      console.error("Error removing document: ", error);
+    });
+};
+
+const addExpenseOnFirestore = (textDesc, expense) => {
+  db.collection("expenses")
+    .add({
+      desc: textDesc,
+      amount: expense,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+    })
+    .then((docRef) => {
+      console.log("Document written with ID: ", docRef.id);
+    })
+    .catch((error) => {
+      console.error("Error adding document: ", error);
+    });
+};
