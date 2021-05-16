@@ -1,4 +1,4 @@
-const getDocuments = () => {
+function getDocuments() {
   db.collection("expenses").onSnapshot((snap) => {
     let documents = [];
     snap.forEach((doc) => {
@@ -11,9 +11,9 @@ const getDocuments = () => {
       renderList(documents);
     });
   });
-};
+}
 
-const deleteFromFirebase = (docId) => {
+function deleteFromFirebase(docId) {
   db.collection("expenses")
     .doc(docId)
     .delete()
@@ -23,9 +23,9 @@ const deleteFromFirebase = (docId) => {
     .catch((error) => {
       console.error("Error removing document: ", error);
     });
-};
+}
 
-const addExpenseOnFirestore = (textDesc, expense) => {
+function addExpenseOnFirestore(textDesc, expense) {
   db.collection("expenses")
     .add({
       desc: textDesc,
@@ -38,4 +38,4 @@ const addExpenseOnFirestore = (textDesc, expense) => {
     .catch((error) => {
       console.error("Error adding document: ", error);
     });
-};
+}

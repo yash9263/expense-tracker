@@ -11,7 +11,7 @@ let totalExpense = 0;
 
 headingEl.textContent = totalExpense;
 
-const addExpenseToTotal = () => {
+function addExpenseToTotal() {
   const expenseItem = {};
   const textAmount = inputElement.value;
   const textDesc = inputDescEl.value;
@@ -30,33 +30,33 @@ const addExpenseToTotal = () => {
 
   headingEl.textContent = someText;
   //   renderList(allExpenses);
-};
+}
 
 // Control functions
-const getDateString = (momento) => {
+function getDateString(momento) {
   return momento.toDate().toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
-};
+}
 
 function deleteItem(docId) {
   deleteFromFirebase(docId);
 }
 
-const renderList = (arrOfList) => {
+function renderList(arrOfList) {
   //   console.log(arrOfList);
   const allExpenseHTML = arrOfList.map((expense) => createListItem(expense));
   const joinedAllExpenseHTML = allExpenseHTML.join("");
   expenseTableEl.innerHTML = joinedAllExpenseHTML;
-};
+}
 // renderList(allExpenses);
 element.addEventListener("click", addExpenseToTotal, false);
 getDocuments();
 
 // View layer
-const createListItem = ({ desc, amount, createdAt, docId }) => {
+function createListItem({ desc, amount, createdAt, docId }) {
   //   console.log(docId);
   return `
       <li class="list-group-item d-flex justify-content-between">
@@ -78,4 +78,4 @@ const createListItem = ({ desc, amount, createdAt, docId }) => {
       </div>
     </li>
       `;
-};
+}
