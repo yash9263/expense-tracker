@@ -10,12 +10,13 @@
     <title>Expense Tracker</title>
 
 </head>
-<body>
+<body style="min-height: 100vh">
     <nav class="navbar navbar-dark bg-dark">
         <span class="navbar-brand mb-0 h1">My Expense</span>
         <span class="navbar-brand mb-0 h1" id='headingTotal'></span>
+        <span class='navbar-brand mb-01 h1' id='signinLink'><a href="./login.html">Log In</a></span>
     </nav>
-    <div class="container-fluid bg-light" style="min-height: 100vh">
+    <div class="container-fluid bg-light" >
         <div class="container">
             <div class="jumbotron mt-4">
                 <div class="input-group mb-3">
@@ -62,6 +63,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
     <script src="https://kit.fontawesome.com/1e5374c7dd.js" crossorigin="anonymous"></script>
     <script src='./firebase-config.js'></script>
+    <script src="./authHelper.js"></script>
     <script src='./firestoreHelper.js'></script>
     <script src='./index.js'></script>
 

@@ -2,12 +2,13 @@
 
 const inputElement = document.querySelector("#inputAmount");
 const element = document.querySelector("#btnAddExpense");
+const signinEl = document.querySelector("#signinLink");
 const headingEl = document.querySelector("#headingTotal");
 const inputDescEl = document.querySelector("#inputDesc");
 const expenseTableEl = document.querySelector("#expenseTable");
 const alertEl = document.querySelector("#alert");
 
-let totalExpense = 0;
+let totalExpense = "Expense: " + 0;
 
 headingEl.textContent = totalExpense;
 
@@ -21,8 +22,10 @@ function addExpenseToTotal() {
   expenseItem.desc = textDesc;
   expenseItem.amount = expense;
   expenseItem.moment = new Date();
-  if (expense !== NaN) {
+  if (!isNaN(expense)) {
     addExpenseOnFirestore(textDesc, expense);
+    inputElement.value = "";
+    inputDescEl.value = "";
   }
 
   totalExpense = totalExpense + expense;
