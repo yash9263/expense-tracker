@@ -7,7 +7,7 @@ function getDocuments() {
         // console.log(doc.id);
         if (doc.id === "total") {
           // console.log(doc.id);
-          headingEl.textContent = "Expense: " + doc.data().total;
+          headingEl.textContent = "Total Expense: " + doc.data().total;
         } else {
           documents.push({
             ...doc.data(),
