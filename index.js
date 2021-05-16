@@ -22,10 +22,14 @@ function addExpenseToTotal() {
   expenseItem.desc = textDesc;
   expenseItem.amount = expense;
   expenseItem.moment = new Date();
-  if (!isNaN(expense)) {
-    addExpenseOnFirestore(textDesc, expense);
-    inputElement.value = "";
-    inputDescEl.value = "";
+  if (firebase.auth().currentUser) {
+    if (!isNaN(expense)) {
+      addExpenseOnFirestore(textDesc, expense);
+      inputElement.value = "";
+      inputDescEl.value = "";
+    }
+  } else {
+    setTimeout(alertBox(), 5000);
   }
 
   totalExpense = totalExpense + expense;
@@ -81,4 +85,10 @@ function createListItem({ desc, amount, createdAt, docId }) {
       </div>
     </li>
       `;
+}
+
+function alertBox() {
+  return `<div class="alert alert-danger" role="alert">
+            A simple danger alert—check it out!
+          </div>`;
 }
