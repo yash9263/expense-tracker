@@ -10,7 +10,7 @@ const alertEl = document.querySelector("#alert");
 
 let totalExpense = "Expense: " + 0;
 
-headingEl.textContent = totalExpense;
+// headingEl.textContent = totalExpense;
 
 function addExpenseToTotal() {
   const expenseItem = {};
@@ -44,8 +44,8 @@ function getDateString(momento) {
   });
 }
 
-function deleteItem(docId) {
-  deleteFromFirebase(docId);
+function deleteItem(docId, amount) {
+  deleteFromFirebase(docId, amount);
 }
 
 function renderList(arrOfList) {
@@ -74,7 +74,7 @@ function createListItem({ desc, amount, createdAt, docId }) {
           <button 
             type="button" 
             class="btn btn-outline-danger btn-sm"
-            onClick="deleteItem('${docId}')"
+            onClick="deleteItem('${docId}', ${amount})"
           >
             <i class="fas fa-trash"></i>
           </button>
